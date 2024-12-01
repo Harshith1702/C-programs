@@ -1,0 +1,16 @@
+#include<stdio.h>
+ main()
+ {
+  int n;
+  printf("Enter a number ");
+  scanf("%d",&n);
+  while(n%2==0)
+  {
+   printf("It is an even number");break;
+  }
+  while(n%2!=0)
+  {
+   printf("It is an odd number");break;
+  }
+}
+  
