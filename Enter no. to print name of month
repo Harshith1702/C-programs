@@ -1,0 +1,23 @@
+#include<stdio.h>
+main()
+{
+ int a;
+ printf("Enter number of the month (1-12)");
+ scanf("%d",&a);
+ switch(a)
+ {
+  case : 1 printf("January");
+  case : 2 printf("February");
+  case : 3 printf("March");
+  case : 4 printf("April");
+  case : 5 printf("May");
+  case : 6 printf("June");
+  case : 7 printf("July");
+  case : 8 printf("August");
+  case : 9 printf("September");
+  case : 10 printf("October");
+  case : 11 printf("November");
+  case : 12 printf("December");
+  default : printf("Invalid Option");
+}
+}
