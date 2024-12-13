@@ -1,0 +1,22 @@
+#include<stdio.h>
+ main()
+ {
+  int c=0,a,b;
+  printf("What is your Name :\n1)Vansh\n2)Rakesh\n3)Harsh\n4)Romeo\nEnter(1-4)\n");
+  scanf("%d",&a);
+  if(a==1)
+  {printf("Correct!\n");
+  c++;}
+  else
+  {printf("Incorrect! Correct ans is Vansh\n");}
+  printf("What is ur roll no.\n1)23\n2)45\n3)5\n4)6\n");
+  scanf("%d",&b);
+  if(b==4)
+  {printf("Correct!\n");
+   c++;}
+  else
+  {printf("Incorrect! Correct ans is 6\n");
+  }
+  printf("Your score is %d/2",c);
+}
+  
