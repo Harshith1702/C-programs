@@ -1,0 +1,194 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node*next;
+};
+struct node*head;
+void begininsert();
+void lastinsert();
+void randominsert();
+void begindelete();
+void lastdelete();
+void randomdelete();
+void display();
+void search();
+int main()
+{
+	int choice=0;
+	while(1){
+		printf("\n**Main Menu\n");
+		printf("\nChoose one option from the following list...\n");
+		printf("1.Insert at beggining\n2.Insert at last\n3.Insert at random\n4.Delete from beggining\n5.Delete from last\n6.Delete from specific location\n7.Search for an element\n8.Display\n9.Exit\n");
+		printf("\nEnter your choice:");
+		scanf("%d",&choice);
+		switch(choice){
+			case 1: begininsert(); break;
+			case 2: lastinsert(); break;
+			case 3: randominsert(); break;
+			case 4: begindelete(); break;
+			case 5: lastdelete(); break;
+			case 6: randomdelete(); break;
+			case 7: search(); break;
+			case 8: display(); break;
+			case 9: exit(0); break;
+			default: printf("Enter valid choice.."); 
+		}
+	}
+}
+
+void begininsert(){
+	struct node*temp;
+	int val;
+	temp=(struct node*)malloc(sizeof(struct node*));
+	if(temp==NULL){
+		printf("\nOverflow");
+	}
+	else{
+		printf("\nEnter value ");
+		scanf("%d",&val);
+		temp->data=val;
+		temp->next=head;
+		head=temp;
+		printf("\nNode is inserted");
+	}
+}
+
+void lastinsert(){
+	struct node *temp,*temp1;
+	int item;
+	temp=(struct node*)malloc(sizeof(struct node));
+	if(temp==NULL){
+		printf("\nOverflow");
+	}
+	else{
+		printf("\nEnter value ");
+		scanf("%d",&item);
+		temp->data=item;
+		if(head==NULL){
+			temp->next=NULL;
+			head=temp;
+			printf("\nNode inserted");
+		}
+	}
+}
+
+void randominsert(){
+	int i,loc,item;
+	struct node *temp,*temp1;
+	temp=(struct node*)malloc(sizeof(struct node));
+	if(temp==NULL){
+		printf("\nOverflow");
+	}
+	else{
+		printf("\nEnter element value ");
+		scanf("%d",&item);
+		temp->data=item;
+		printf("Enter the location after which you want to insert ");
+		scanf("%d",&loc);
+		temp1=head;
+		for(i=0;i<loc;i++){
+			temp1=temp1->next;
+			if(temp1==NULL){
+				printf("\nCant insert\n");
+				return;
+			}
+		}
+		temp->next=temp1->next;
+		temp1->next=temp;
+		printf("\nNode inserted");
+	}
+}
+
+void begindelete(){
+	struct node*temp;
+	if(head==NULL){
+		printf("\nList is empty\n");
+	}
+	else{
+		temp=head;
+		head=temp->next;
+		free(temp);
+		printf("\nNode deleted from the beggining...\n");
+	}
+}
+
+void lastdelete(){
+	struct node *temp,*temp1;
+	if(head==NULL){
+		printf("\nList is empty");
+	}
+	else if(head->next==NULL){
+		head=NULL;
+		free(head);
+		printf("\nOnly node of the list deleted...\n");
+	}
+	else{
+		temp=head;
+		while(temp->next!=NULL){
+			temp1=temp;
+			temp=temp->next;
+		}
+		temp1->next=NULL;
+		free(temp);
+		printf("\nDeleted node from the last...\n");
+	}
+}
+
+void randomdelete(){
+	struct node *temp,*temp1;
+	int loc,i;
+	printf("\nEnter the location of node after which you want to perform deletion\n");
+	scanf("%d",&loc);
+	temp=head;
+	for(i=0;i<loc;i++){
+		temp1=temp;
+		temp=temp->next;
+		if(temp==NULL){
+			printf("\nCant delete");
+		}
+	}
+	temp1->next=temp->next;
+	free(temp);
+	printf("\nDeleted node %d",loc+1);
+}
+
+void search(){
+	struct node*temp;
+	int item,i=0,flag;
+	temp=head;
+	if(temp==NULL)
+	printf("\nEmpty List\n");
+	else{
+		printf("\nEnter item which you want to search\n ");
+		scanf("%d",&item);
+		while(temp!=NULL){
+			if(temp->data==item){
+				printf("Item found at %d location",i+1);
+				flag=0;
+				break;
+			}
+			else{
+				flag=1;
+			}
+			i++;
+			temp=temp->next;
+		}
+		if(flag==1)
+		printf("Item not found\n");
+	}
+}
+
+void display(){
+	struct node*temp;
+	temp=head;
+	if(temp==NULL)
+	printf("Nothing to print");
+	else{
+		printf("\nPrinting values.....\n");
+		while(temp!=NULL){
+			printf("\n%d",temp->data);
+			temp=temp->next;
+		}
+	}
+}
