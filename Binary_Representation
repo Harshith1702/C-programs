@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int t;
+    printf("Enter number of test cases:");
+    scanf("%d",&t);
+    while(t--){
+        int n;
+        printf("Enter a number to convert it into binary number:");
+        scanf("%d",&n);
+        int k=0;
+        char ans[100000010];
+        if(n == 0) {
+            printf("0\n");
+            continue;
+        }
+        while(n!=0){
+           ans[k++] = '0' + n%2;
+            n=n/2;
+        }
+       for(int i=k-1;i>=0;i--){
+         printf("%c",ans[i]);
+         }  printf("\n");
+    }
+    return 0;
+}
