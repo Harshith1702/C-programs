@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+long long poww(long long a,long long n){
+    long long m=1000000007;
+    if(n==0) return 1;
+    long long x=poww(a,n/2);
+    if(n%2==0)  return (x*x)%m;
+    return ((x*x%m)*a)%m;
+}
+
+int main() {
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        long long a,n;
+        scanf("%lld%lld",&a,&n);
+        printf("%lld\n",poww(a,n));
+    }
+}
